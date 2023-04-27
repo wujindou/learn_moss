@@ -13,10 +13,10 @@ class StopWordsCriteria(StoppingCriteria):
             if self.stop_indices[-1-i] != input_ids[0][-1-i]:
                 return False
         return True
-device_map={'transformer.wte': 0,
- 'transformer.drop': 0,
- 'transformer.h.0': 0,
- 'transformer.h.1': 0,
+device_map={'transformer.wte': 'disk',
+ 'transformer.drop': 'disk',
+ 'transformer.h.0': 'disk',
+ 'transformer.h.1': 'disk',
  'transformer.h.2': 'disk',
  'transformer.h.3': 'disk',
  'transformer.h.4': 'disk',
