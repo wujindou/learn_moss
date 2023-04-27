@@ -60,7 +60,7 @@ plugin_instruction = "- Inner thoughts: enabled.\n- Web search: enabled. API: Se
 query = meta_instruction + plugin_instruction + "<|Human|>: 黑暗荣耀的主演有谁<eoh>\n"
 inputs = tokenizer(query, return_tensors="pt")
 for k in inputs:
-  inputs[k] = inputs[k].cuda()
+  inputs[k] = inputs[k]
 outputs = model.generate(**inputs, do_sample=True, temperature=0.7, top_p=0.8, repetition_penalty=1.02, max_new_tokens=256, stopping_criteria=stopping_criteria_list)
 response = tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
 print(response)
